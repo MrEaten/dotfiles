@@ -1,0 +1,61 @@
+{
+    "matlab.linterConfig": "",
+    "matlab.mlintpath": "/usr/local/MATLAB/R2019b/bin/glnxa64/mlint",
+    "files.associations": {
+        "*.m": "matlab"
+    },
+    "window.zoomLevel": 0,
+    "C_Cpp.updateChannel": "Insiders",
+    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "workbench.activityBar.visible": true,
+    "breadcrumbs.enabled": true,
+    "workbench.sideBar.location": "left",
+
+    // set leader key 
+    "vim.leader": "<space>",
+    // Bind Visual mode Keybindings
+    "vim.visualModeKeyBindings": [
+        {
+            "before": [
+                "<leader>",
+                ":"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.showCommands",
+                    "args": []
+                }
+            ]
+        },
+    ],
+    // Bind normal mode keybindings
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "<leader>",
+                ":"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.showCommands",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "."
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.quickOpen",
+                    "args": []
+                }
+            ]
+        },
+    ],
+}

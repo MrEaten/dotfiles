@@ -1,0 +1,78 @@
+@import "../color/gruvbox-dark-custom.rasi"
+window {
+	transparency: "real";
+	/*fullscreen: true;*/
+    border-radius: 8px;
+	background-color: @background-transparent;
+}
+
+mainbox {
+	children: [inputbar, message, mode-switcher, listview];
+	spacing: 30px;
+	/*margin: 20%;*/
+	padding: 30px 0;
+	border: 2px;
+}
+
+inputbar {
+	padding: 0 30px;
+	children: [prompt, textbox-prompt-colon, entry, case-indicator];
+}
+
+prompt {
+}
+
+textbox-prompt-colon {
+	expand: false;
+	str: ":";
+	margin: 0 1ch 0 0;
+}
+
+entry {
+}
+
+case-indicator {
+}
+
+mode-switcher, message {
+	border: 1px 0;
+}
+
+button, textbox {
+	padding: 5px;
+}
+
+button selected {
+	background-color: @active-background;
+    text-color: @active-foreground;
+}
+
+listview {
+	scrollbar: false;
+	margin: 0 10px 0 30px;
+}
+
+scrollbar {
+	background-color: @base03;
+	handle-color: @base02;
+	handle-width: 10px;
+	border: 0 1px;
+	border-color: @base01;
+	margin: 0 0 0 20px;
+}
+
+element {
+	padding: 5px;
+	highlight: bold underline;
+}
+
+element normal {
+	background-color: transparent;
+	text-color: @white;
+}
+
+element selected {
+	background-color: @active-background;
+	text-color: @active-foreground;
+    font: "Source Code Pro 16";
+}

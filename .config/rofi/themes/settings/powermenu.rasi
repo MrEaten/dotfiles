@@ -1,0 +1,32 @@
+@import "../color/gruvbox-dark-custom.rasi"
+
+window {
+  transparency: "real";
+  /*fullscreen: true;*/
+  width: 1920px;
+  height: 1080px;
+  children: [ horibox ];
+  padding: 415px 183px;
+  background-color: @background-transparent;
+}
+horibox {
+  children: [ listview ];
+}
+listview {
+  layout: horizontal;
+  spacing: 77px;
+  lines: 4;
+  scrollbar: false;
+  padding: 20px;
+  margin: 4px 4px;
+}
+element {
+  padding: 88px  100px 81px  4px;
+  background-color: @background;
+}
+element.selected {
+  background-color: @active-background;
+  text-color: @active-foreground;
+}
+
+

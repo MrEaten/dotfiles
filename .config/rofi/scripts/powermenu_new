@@ -1,0 +1,29 @@
+#!/bin/bash
+
+rofi_command="rofi -config ~/.config/rofi/config_powermenu"
+
+### Options ###
+power_off="OFF"
+reboot="RE"
+lock=""
+log_out=""
+# Variable passed to rofi
+options="$power_off\n$reboot\n$lock\n$log_out"
+
+chosen="$(echo -e "$options" | $rofi_command -dmenu -selected-row 2)"
+case $chosen in
+    $power_off)
+        promptmenu --yes-command "systemctl poweroff" --query "Shutdown?"
+        ;;
+    $reboot)
+        promptmenu --yes-command "systemctl reboot" --query "Reboot?"
+        ;;
+    $lock)
+        i3lock -i ~/Pictures/wallpapers/lock_screen.png
+		;;
+    $log_out)
+        i3-msg exit & qshell -c shutdown
+        ;;
+esac
+
+

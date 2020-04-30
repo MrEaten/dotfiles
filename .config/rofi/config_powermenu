@@ -1,0 +1,11 @@
+rofi.theme: ~/.config/rofi/themes/settings/powermenu.rasi
+
+rofi.kb-accept-entry: Control+m,Return,KP_Enter 
+rofi.kb-remove-to-eol: 
+rofi.kb-row-up: Control+k
+rofi.kb-row-down: Control+j
+rofi.kb-remove-char-forward: Delete
+rofi.kb-clear-line: Control+d
+rofi.display-drun: Launch
+rofi.display-window: Window
+

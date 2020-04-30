@@ -1,0 +1,17 @@
+
+export FEAPHOME8_5=/home/till/.local/share/feap/ver85
+
+[ -f "/etc/profile.d/petsc.sh" ] && source "/etc/profile.d/petsc.sh"
+export PETSC_ARCH=gnu-opt
+
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export LESSHISTFILE=$XDG_CACHE_HOME/less/history
+
+if [ ! -w ${XDG_RUNTIME_DIR:="/run/user/$UID"} ]; then
+    echo "\$XDG_RUNTIME_DIR ($XDG_RUNTIME_DIR) not writable. Unsetting." >&2
+    unset XDG_RUNTIME_DIR
+else
+    export XDG_RUNTIME_DIR
+fi

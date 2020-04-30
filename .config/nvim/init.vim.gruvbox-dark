@@ -1,0 +1,155 @@
+" load plugins
+call plug#begin()
+
+    Plug 'drewtempelmeyer/palenight.vim'
+    Plug 'octol/vim-cpp-enhanced-highlight'
+    Plug 'lazywei/vim-matlab'
+    Plug 'terryma/vim-multiple-cursors'
+    Plug 'lervag/vimtex' 
+    Plug 'MortenStabenau/matlab-vim'
+    Plug 'scrooloose/nerdtree'
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'christoomey/vim-tmux-navigator'
+    Plug 'adelarsq/vim-matchit'
+    Plug 'easymotion/vim-easymotion'
+    Plug 'Mizux/vim-colorschemes'
+    Plug 'morhetz/gruvbox'
+	Plug 'nathanaelkane/vim-indent-guides'
+    
+call plug#end()
+
+
+" set nerdtree window size
+let NERDTreeWinSize=21 
+
+" start vim with server (required for pdf -> tex backward search)
+if empty(v:servername) && exists('*remote_startserver')
+  call remote_startserver('VIM')
+endif
+ 
+"set nocompatible
+set nocompatible
+
+" set textwidth marker
+set textwidth=80
+set colorcolumn=+1 
+
+" set ctags
+set tags+=/usr/include/tags,/usr/local/tags
+
+
+" file search
+set path+=/usr/include/,**
+set wildmenu
+
+tab sball
+set switchbuf=usetab,newtab
+
+" encoding 
+set encoding=utf-8
+
+" set leader key
+:let mapleader=(' ')
+
+" easymotion leader rebinding
+" map <Leader>e <Plug>(easymotion-prefix)
+
+" set colorscheme
+set background=dark
+set t_Co=256
+colorscheme gruvbox
+hi Normal guibg=NONE ctermbg=NONE
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+" activate mouse
+set mouse=a
+
+" yank, cut and copy with standard bindings (in V-Mode)
+vnoremap <C-c> "+y
+vnoremap <C-x> "+d
+map <C-p> "+P
+
+" define tab as 4 spaces and auto indent
+filetype plugin indent on
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
+" set expandtab
+autocmd FileType py set expandtab
+
+" navigate with double leader (,) 
+inoremap ,, <Esc>/<++><Enter>"_c4l
+vnoremap ,, <Esc>/<++><Enter>"_c4l
+map ,, <Esc>/<++><Enter>"_c4l
+
+" setup linenumbering
+:set number 
+:set relativenumber 
+
+" wildmode / autocomplete 
+set wildmode=longest,list,full
+
+set laststatus=2
+set statusline=\ %f%m%r%h%w\ %=%({%{&ff}\|%{(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\")}%k\|%Y}%)\ %([%l,%v][%p%%]\ %)
+
+" set split to right and below
+set splitbelow splitright
+
+" move between splits
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" General shortcuts
+" new tab
+nnoremap <leader>tt :tabe<CR>
+nnoremap <leader>tn :tabe<CR>
+" new vertical split
+nnoremap <leader>wv :vs<CR>
+" new horizontal split
+nnoremap <leader>ws :vs<CR>
+" NERDTREE explorer
+nnoremap <leader>. :NERDTreeToggle<CR>
+" close frame
+nnoremap <leader>wq :q<CR>
+
+" setup spellchecking
+map <F6> :set nospell<CR>
+map <F7> :setlocal spell spelllang=de_de<CR> 
+map <F8> :setlocal spell spelllang=en_gb<CR> 
+
+" Latex shortcuts
+let g:livepreview_previewer= 'zathura'
+let g:livepreview_cursorhold_recompile=50
+let g:tex_flavor="latex"
+let g:vimtex_view_method="zathura"
+
+" activate Indent Guides
+let g:IndentGuidesEnable=1
+
+autocmd BufNewFile,BufRead *.pdf_tex set syntax=tex
+
+autocmd FileType tex map <F5> <Esc>:VimtexCompile<Enter>
+autocmd FileType tex inoremap ,be \begin{multiple_cursors_point}<Enter><++><Enter>\end{multiple_cursors_point}<Enter><Esc>3k<Esc>:.,.+2 MultipleCursorsFind multiple_cursors_point<Enter>c
+autocmd FileType tex inoremap ,equ \begin{equation}<Enter><++><Enter>\end{equation}<Enter><++><Esc>4k<Esc>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ,equ* \begin{equation*}<Enter><++><Enter>\end{equation*}<Enter><++><Esc>4k<Esc>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ,ali \begin{align}<Enter><++><Enter>\end{align}<Enter><++><Esc>4kA<Esc>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ,ali* \begin{align*}<Enter><++><Enter>\end{align*}<Enter><++><Esc>4kA<Esc>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ,pic \begin{fig}[<++>] <++><Enter>\includegraphics[<++>]{<++>}<Enter>\caption{<++>}<Enter>\end{fig}<Enter><++><Esc>5kA<Esc>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ,svg \begin{fig}[<++>] <++><Enter> \def\svgwidth{<++>}<Enter> \import{<++>}{<++>}<Enter>\caption{<++>}<Enter>\end{fig}Enter> <++><Esc>5kA<Esc>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ,ali* \begin{align*}<Enter><++><Enter>\end{align*}<Enter><++><Esc>5kA<Esc>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ,enu \begin{enumerate}<Enter>    \item <++><Enter>\end{enumerate}<Enter><++><Esc>4kA<Esc>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ,enu* \begin{enumerate*}<Enter>    \item <++><Enter>\end{enumerate*}<Enter><++><Esc>4kA<Esc>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ,fra \frac{<++>}{<++>} <++><Esc>0<Esc>/<++><Enter>"_c4l
+autocmd FileType tex inoremap ,svg \def\svgwidth{}<Esc>i
+autocmd FileType bib inoremap ,art @Article{<++><Enter>title={<++>}<Enter>author={<++>}<Enter>year={<++>}<Enter>journal={<++>}<Enter>volume={<++>}<Enter>pages={<++>}<Enter>}<Enter><++><Esc>8k<Esc>/<++><Enter>"_c4l
+
+autocmd FileType bib inoremap ,boo @BOOK{<++><Enter>title={<++>}<Enter>author={<++>}<Enter>year={<++>}<Enter>publisher={<++>}<Enter>volume={<++>}<Enter>adress={<++>}<Enter>}<Enter><++><Esc>8k<Esc>/<++><Enter>"_c4l
+
+" R Mardown shortcuts
+autocmd Filetype rmd map <F5> :w<enter>:!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>R<space>--vanilla<enter>

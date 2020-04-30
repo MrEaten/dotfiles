@@ -1,0 +1,105 @@
+################################################################################
+### BASIC BINDINGS
+################################################################################
+# make sxhkd reload its configuration files:
+super + Escape
+ pkill -USR1 -x sxhkd
+
+# bind rofi 
+super + r 
+ rofi -show drun -modi drun,window -show-icons -drun-match-fields name,exec
+
+# bind terminal (alacritty)
+super + Return
+ alacritty # -e ~/scripts/shell/tmux_start.sh
+
+
+################################################################################
+### SYSTEM MENUS
+################################################################################
+# bind xfce menu
+super + F4
+ xfce4-appfinder
+
+# bind powermenu (rofi)
+super + F2
+ ~/scripts/shell/powermenu-alt
+
+
+################################################################################
+### VOLUME CONTROL
+################################################################################
+
+super + KP_Add 
+ ~/scripts/pulseaudio_control/pulseaudio-control.sh --up
+
+super + plus 
+ ~/scripts/pulseaudio_control/pulseaudio-control.sh --up
+
+super + KP_Subtract
+ ~/scripts/pulseaudio_control/pulseaudio-control.sh --down
+
+super + minus
+ ~/scripts/pulseaudio_control/pulseaudio-control.sh --down
+  
+################################################################################
+### Open Programs
+################################################################################
+
+# bind firefox
+super + o ; i
+ firefox
+super + o ; shift + i
+ firefox --private-window
+
+# bind emacs
+super + o ; e
+ emacsclient -c
+
+# bind pamac
+super + o ; p
+ pamac
+
+# bind pulseaudio
+super + o ; a
+ pavucontrol
+# bind nvidia 
+super + o ; v
+ nvidia-settings
+
+# bind spotify
+super + o ; s
+ spotify
+ 
+# bind file explorer
+super + o ; n
+ nautilus
+
+################################################################################
+### DMENU (ROFI) SCRIPTS
+################################################################################
+
+# dmenu config files
+super + d ; c
+  menu_config.sh
+
+################################################################################
+### I3 BINDINGS
+################################################################################
+
+# change split
+# horizontal
+super + s ; h
+  i3-msg split vertical
+# vertical
+super + s ; v
+  i3-msg split horizontal
+
+# change container layout mode
+super + m ; s
+  i3-msg layout stacking
+super + m ; t
+  i3-msg layout tabbed
+super + m ; e
+  i3-msg layout toggle split
+

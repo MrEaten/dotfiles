@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/home/till/.dotfiles/.config/polybar/new'
+let g:netrw_dirhist_9='/home/till/.dotfiles/.config/polybar/qtile'
+let g:netrw_dirhist_8='/home/till/.config/sxhkd'
+let g:netrw_dirhist_7='/home/till/.config'
+let g:netrw_dirhist_6='/home/till'
+let g:netrw_dirhist_5='/home/till/.dotfiles'
+let g:netrw_dirhist_4='/home/till/.dotfiles/.config'
+let g:netrw_dirhist_3='/home/till/.dotfiles/.config/i3'
+let g:netrw_dirhist_2='/home/till/.config/i3'
+let g:netrw_dirhist_1='/home/till/.config'
