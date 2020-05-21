@@ -16,6 +16,7 @@ call plug#begin()
     Plug 'easymotion/vim-easymotion'
     Plug 'Mizux/vim-colorschemes'
     Plug 'morhetz/gruvbox'
+	Plug 'joshdick/onedark.vim'
 	Plug 'nathanaelkane/vim-indent-guides'
 	Plug 'kien/rainbow_parentheses.vim'
 	Plug 'mhinz/vim-startify'
@@ -28,6 +29,7 @@ call plug#begin()
 	Plug 'neoclide/coc-vimtex'
 	Plug 'junegunn/fzf.vim'
 	Plug 'preservim/nerdcommenter'
+	Plug 'Xuyuanp/nerdtree-git-plugin'
 
 call plug#end()
 
@@ -100,7 +102,7 @@ set background=dark
 " use 256 colors
 set t_Co=256
 " set colorscheme, requires gruvbox to be installed
-colorscheme gruvbox
+colorscheme onedark
 " no idea what this is for
 hi Normal guibg=NONE ctermbg=NONE
 " check if terminal supports colorschem
@@ -144,6 +146,9 @@ nnoremap <leader>wT <C-w>T
 vnoremap <C-c> "+y
 vnoremap <C-x> "+d
 map <C-p> "+P
+nnoremap <C-s> <ESC>:w<CR>
+nnoremap <leader>bw <ESC>:w<CR>
+nnoremap <leader>ba <ESC>:wa<CR>
 
 " General shortcuts
 " new tab
@@ -152,11 +157,12 @@ nnoremap <leader>tn :tabe<CR>
 " new vertical split
 nnoremap <leader>wv :vs<CR>
 " new horizontal split
-nnoremap <leader>ws :sp<CR>
+nnoremap <leader>wh :sp<CR>
 " NERDTREE explorer
 nnoremap <leader>n :NERDTreeToggleVCS<CR>
 " close frame
 nnoremap <leader>wq :q<CR>
+nnoremap <leader>wa :wqa<CR>
 
 " setup spellchecking
 map <F6> :set nospell<CR>
@@ -173,14 +179,12 @@ map ,, <Esc>/<++><Enter>"_c4l
 nnoremap <leader>cd <ESC>:cd %:p:h<CR>
 
 " open ranger file explorer
-nnoremap <leader>fe <ESC>:ranger<CR>
+nnoremap <leader>fr <ESC>:Ranger<CR>
 " search for file
 " below working directory
 nnoremap <leader>ff <ESC>:Files<CR>
 " below home directory
 nnoremap <leader>. <ESC>:Files ~<CR>
-" below root
-nnoremap <leader>fr <ESC>:Files /<CR>
 
 nnoremap <leader>fp <ESC>:Files <c-r>=expand("/")<CR>
 nnoremap <leader>fc <ESC>:Files ~/.config/<CR>
@@ -213,7 +217,7 @@ let g:ranger_map_keys = 0
 
 " Set lightline theme (vim statusbar)
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
+      \ 'colorscheme': 'onedark',
       \ }
 " Set tmux statusbar to lightline theme
 " execute command 'Tmuxline lightline tmux'
@@ -298,6 +302,15 @@ set shortmess+=c
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 set signcolumn=yes
+
+" vim-prettier
+"let g:prettier#quickfix_enabled = 0
+"let g:prettier#quickfix_auto_focus = 0
+" prettier command for coc
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+" run prettier on save
+let g:prettier#autoformat = 0
+"autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by

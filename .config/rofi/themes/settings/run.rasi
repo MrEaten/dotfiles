@@ -1,4 +1,4 @@
-@import "../color/gruvbox-dark-custom.rasi"
+@import "../color/one_dark.rasi"
 window {
 	transparency: "real";
 	/*fullscreen: true;*/

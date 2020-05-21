@@ -1,0 +1,4 @@
+Terminal,alacritty,utilities-terminal
+Browser,firefox,firefox
+File manager,nautilus,system-file-manager
+^sep()

@@ -24,3 +24,9 @@ nm-applet &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 # disable mouse acceleratoin
 xset m 0 0
+
+# set environment variable to fix java bugs with bspwm (matlab white windows)
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# set cursor (bspwm)
+xsetroot -cursor_name left_ptr

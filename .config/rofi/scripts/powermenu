@@ -4,7 +4,8 @@
 
 MENU="$(rofi -sep "|" -dmenu -i -p 'System' -location 3 -yoffset 32 -xoffset -10 -width 12 -hide-scrollbar -line-padding 4 -padding 20 -lines 4 -font "Misc Termsyn 12" <<< "Lock|Logout|Reboot|Shutdown")"
             case "$MENU" in
-                *Lock) i3lock -i ~/Pictures/wallpapers/lock_screen.png;;
+#                *Lock) i3lock -i ~/Pictures/wallpapers/lock_screen.png;;
+                *Lock) i3lock-fancy-multimonitor -n -b=5x5
                 *Logout) i3-msg exit & qshell -c shutdown & bspc quit;;
                 *Reboot) systemctl reboot ;;
                 *Shutdown) systemctl -i poweroff

@@ -1,0 +1,61 @@
+# use vim key bindings
+setw -g mode-keys vi
+
+# open new pane / window in current directory
+bind c new-window      -c "#{pane_current_path}"
+# bind % split-window -h -c "#{pane_current_path}"
+# bind \" split-window -v -c "#{pane_current_path}"
+bind | split-window -h -c "#{pane_current_path}"
+bind - split-window -v -c "#{pane_current_path}"
+
+# Ctrl - w or w to kill panes
+unbind w
+unbind C-w
+bind-key w kill-pane
+bind-key C-w kill-pane
+
+# reload tmux config with ctrl + a + r
+ unbind r
+ bind r \
+     source-file ~/.tmux.conf \;\
+         display 'Reloaded tmux config.'
+         
+# set first window to index 1 (not 0) to map more to the keyboard layout
+set -g base-index 1
+set -g pane-base-index 1
+
+# Using the mouse to switch panes
+set -g mouse on
+
+# prefix - w to kill pane
+unbind w
+bind-key w kill-pane
+
+# smart pane switching with awareness of vim splits
+# makes ctrl-j and ctrl-k navigate fzf search results when fzf active in pane
+# providing the same behavior as ctrl-j and ctrl-k when navigating ctrl-p results
+# inside vim.
+
+# Smart pane switching with awareness of Vim splits.
+# See: https://github.com/christoomey/vim-tmux-navigator
+is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
+    | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
+bind-key -n C-h if-shell "$is_vim" "send-keys C-h"  "select-pane -L"
+bind-key -n C-j if-shell "$is_vim" "send-keys C-j"  "select-pane -D"
+bind-key -n C-k if-shell "$is_vim" "send-keys C-k"  "select-pane -U"
+bind-key -n C-l if-shell "$is_vim" "send-keys C-l"  "select-pane -R"
+bind-key -n C-\\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"
+bind-key -T copy-mode-vi C-h select-pane -L
+bind-key -T copy-mode-vi C-j select-pane -D
+bind-key -T copy-mode-vi C-k select-pane -U
+bind-key -T copy-mode-vi C-l select-pane -R
+bind-key -T copy-mode-vi C-\\ select-pane -l
+
+# so you don't end up with window numbers like: 0 1 4 5 6
+set-option -g renumber-windows on
+
+if-shell "test -f $XDG_CONFIG_HOME/tmux/tmux_lightline" "source $XDG_CONFIG_HOME/tmux/tmux_lightline"
+
+set-option -sg escape-time 10
+set-option -g default-terminal "screen-256color"
+set-option -sa terminal-overrides ',alacritty:RGB'

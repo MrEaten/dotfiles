@@ -5,6 +5,8 @@ super + Escape
 # bind rofi 
 super + r 
  rofi -show drun -modi drun,window -show-icons -drun-match-fields name,exec
+super + w
+  rofi -show window -modi window -show-icons
 
 # bind terminal (alacritty)
 super + Return
@@ -72,7 +74,7 @@ super + shift + r
 
 # close and kill 
 super + shift + q
- bspc node -{c,k}
+ bspc node -c
 
 # alternate between the tiled and monocle layout
 super + m
@@ -91,7 +93,7 @@ super + g
 #
 
 # set the window state
-super + {t,shift + t,s,f}
+super + {t,shift + t,space,f}
  bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
@@ -114,9 +116,10 @@ super + {p,b,comma,period}
 super + {_,shift + }c
  bspc node -f {next,prev}.local
 
-# focus the next/previous desktop in the current monitor
-super + bracket{left,right}
- bspc desktop -f {prev,next}.local
+## focus the next/previous desktop in the current monitor
+# buggy
+#super + bracket{left,right}
+# bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
 super + {grave,Tab}
@@ -131,6 +134,11 @@ super + {u,i}
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
  bspc {desktop -f,node -d} '^{1-9,10}'
+
+super + Down;
+ bspc node -d '^{11}'
+super + Up;
+ bspc desktop -f '^{11}'
 
 #
 # preselect
@@ -168,31 +176,35 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
  bspc node -v {-20 0,0 20,0 -20,20 0}
 
-super + w
-	id=$(bspc query -N -n "focused");\
-	if [ -n "$id" ];then \
-		xprop -id $id -f _SCRATCH 32ii -set _SCRATCH $(date +%s,%N);\
-		bspc node -t "floating";\
-		xdotool windowunmap $id;\
-	fi
+# toggle scratchpad
+#super + s
+# id=$(cat /tmp/scratchid); bspc node $id --flag hidden; bspc node -f $id
 
-super + shift + w
-	i=$(bspc query -N -n "focused.floating");\
-	if [ -n "$i" ];then \
-		xprop -id $i -f _SCRATCH 32ii -set _SCRATCH $(date +%s,%N);\
-		xdotool windowunmap $i;\
-	else;\
-		i=$(for w in $(xwininfo -root -children | grep -e "^\s*0x[0-9a-f]\+" -o);do \
-			t=$(xprop -id $w _SCRATCH | grep ' = \(.*\)');\
-			if [ -n "$t" ];then \
-				echo $t $w;\
-			fi;\
-		done|sort -n|head -n1|cut -d" " -f 5);\
-		if [ -n "$i" ];then \
-			xprop -id $i -remove _SCRATCH;\
-			bspc rule -a \* state=floating center=on --one-shot;\
-			xdotool windowmap $i;\
-			bspc node -f $i;\
-		fi;\
-	fi
-
+#super + w
+#	id=$(bspc query -N -n "focused");\
+#	if [ -n "$id" ];then \
+#		xprop -id $id -f _SCRATCH 32ii -set _SCRATCH $(date +%s,%N);\
+#		bspc node -t "floating";\
+#		xdotool windowunmap $id;\
+#	fi
+#
+#super + shift + w
+#	i=$(bspc query -N -n "focused.floating");\
+#	if [ -n "$i" ];then \
+#		xprop -id $i -f _SCRATCH 32ii -set _SCRATCH $(date +%s,%N);\
+#		xdotool windowunmap $i;\
+#	else;\
+#		i=$(for w in $(xwininfo -root -children | grep -e "^\s*0x[0-9a-f]\+" -o);do \
+#			t=$(xprop -id $w _SCRATCH | grep ' = \(.*\)');\
+#			if [ -n "$t" ];then \
+#				echo $t $w;\
+#			fi;\
+#		done|sort -n|head -n1|cut -d" " -f 5);\
+#		if [ -n "$i" ];then \
+#			xprop -id $i -remove _SCRATCH;\
+#			bspc rule -a \* state=floating center=on --one-shot;\
+#			xdotool windowmap $i;\
+#			bspc node -f $i;\
+#		fi;\
+#	fi
+#
