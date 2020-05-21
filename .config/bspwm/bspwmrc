@@ -1,0 +1,43 @@
+#!/bin/sh
+
+killall sxhkd &
+killall tint2 &
+killall polybar &
+sxhkd -c ~/.config/sxhkd/sxhkdrc_bspwm &
+
+bspc rule -r "*"
+
+bspc monitor DVI-I-0 -d I II III floating mail download games video music tv hidden
+
+bspc config border_width         2
+bspc config window_gap          16
+bspc config top_padding 0
+bspc config bottom_padding 0
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a Steam desktop='^6'
+bspc rule -a Lutris desktop='^6'
+#bspc rule -a Steam desktop='^7' state=floating follow=on
+bspc rule -a Spotify* desktop='^9'
+bspc rule -a Thunderbird desktop='^5'
+bspc rule -a *Protonmail* desktop='^5'
+bspc rule -a *Discord* desktop='^5'
+bspc rule -a Zoom desktop='^5'
+bspc rule -a *Teams* desktop='^5'
+bspc rule -a *Teamspeak* desktop='^5'
+bspc rule -a Figure* state=floating
+
+# setup floating deskotp (4)
+~/.config/bspwm/floating_desktop.sh &
+
+
+wmname LG3D &
+tint2 &
+~/.config/polybar/active/launch.sh &
+
+# setup scratchpad
+#bspc rule -a scratchpad sticky=on state=floating hidden=on
+#alacritty -t scratchpad -e ~/scripts/shell/scratchpad.sh &
