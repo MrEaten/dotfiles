@@ -23,7 +23,11 @@ nm-applet &
 # load polkit authentication agent (allows install with pamac)
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 # disable mouse acceleratoin
-xset m 0 0
+xset m 0 0 &
+# load redshift
+redshift-gtk &
+# load nvidia settings
+nvidia-settings --load-config-only
 
 # set environment variable to fix java bugs with bspwm (matlab white windows)
 export _JAVA_AWT_WM_NONREPARENTING=1

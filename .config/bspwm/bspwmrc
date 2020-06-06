@@ -3,7 +3,9 @@
 killall sxhkd &
 killall tint2 &
 killall polybar &
+killall dunst &
 sxhkd -c ~/.config/sxhkd/sxhkdrc_bspwm &
+nvidia-settings --load-config-only &
 
 bspc rule -r "*"
 
@@ -35,6 +37,7 @@ bspc rule -a Figure* state=floating
 
 
 wmname LG3D &
+dunst &
 tint2 &
 ~/.config/polybar/active/launch.sh &
 

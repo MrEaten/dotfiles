@@ -84,22 +84,38 @@ super + d ; c
   menu_config.sh
 
 ################################################################################
-### I3 BINDINGS
+### QTILE BINDINGS
 ################################################################################
 
-# change split
-# horizontal
-super + s ; h
-  i3-msg split vertical
-# vertical
-super + s ; v
-  i3-msg split horizontal
+super + {_,shift +}j
+ qtile-cmd -o layout -f {down,shuffle_down}
 
-# change container layout mode
-super + m ; s
-  i3-msg layout stacking
-super + m ; t
-  i3-msg layout tabbed
-super + m ; e
-  i3-msg layout toggle split
+super + {_,shift +}k
+ qtile-cmd -o layout -f {up,shuffle_up}
 
+super + shift + q
+ qtile-cmd -o window -f kill
+
+super + l  
+ qtile-cmd -o layout -f grow
+ qtile-cmd -o layout -f increase_nmaster
+
+super + h
+ qtile-cmd -o layout -f shrink
+ qtile-cmd -o layout -f decrease_nmaster
+
+super + Tab
+ qtile-cmd -o cmd -f next_layout
+
+super + shift + space
+ qtile-cmd -o window -f toggle_floating
+
+super + n
+ qtile-cmd -o layout -f normalize
+
+super + f
+ qtile-cmd -o layout -f maximize
+
+super + shift + r
+ qtile-cmd -o cmd -f restart
+ 

@@ -1,2 +1,4 @@
 *.git
 *backup*
+*.bu*
+__pycache__

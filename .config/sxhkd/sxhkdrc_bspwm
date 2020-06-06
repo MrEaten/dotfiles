@@ -93,8 +93,8 @@ super + g
 #
 
 # set the window state
-super + {t,shift + t,space,f}
- bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+super + {t,shift + t,f}
+ bspc node -t {tiled,pseudo_tiled,floating}
 
 # set the node flags
 super + ctrl + {m,x,y,z}
@@ -109,11 +109,11 @@ super + {_,shift + }{h,j,k,l}
  bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
-super + {p,b,comma,period}
- bspc node -f @{parent,brother,first,second}
+#super + {p,b,comma,period}
+# bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous node in the current desktop
-super + {_,shift + }c
+super + {n,p}
  bspc node -f {next,prev}.local
 
 ## focus the next/previous desktop in the current monitor
@@ -135,10 +135,13 @@ super + {u,i}
 super + {_,shift + }{1-9,0}
  bspc {desktop -f,node -d} '^{1-9,10}'
 
-super + Down;
- bspc node -d '^{11}'
-super + Up;
- bspc desktop -f '^{11}'
+#super + Down;
+# bspc node -d '^{11}'
+#super + Up;
+# bspc desktop -f '^{11}'
+
+super + {_,shift + }{Down}
+ bspc {desktop -f,node -d} '^{11}'
 
 #
 # preselect

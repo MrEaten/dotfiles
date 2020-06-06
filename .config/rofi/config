@@ -2,6 +2,7 @@ rofi.lines: 15
 rofi.theme: ~/.config/rofi/themes/settings/run.rasi
 
 rofi.kb-accept-entry: Control+m,Return,KP_Enter 
+rofi.kb-delete-entry: Shift+Delete
 rofi.kb-remove-to-eol: 
 rofi.kb-row-up: Control+k,Up
 rofi.kb-row-down: Control+j,Down

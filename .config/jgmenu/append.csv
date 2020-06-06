@@ -1,8 +1,8 @@
 ^sep()
-Lock,i3lock-fancy-multimonitor -n -b=5x5,system-lock-screen
+Lock,sleep 0.1;i3lock-fancy-multimonitor -b=5x3,system-lock-screen
 Exit,^checkout(exit),system-shutdown
 ^tag(exit)
-Suspend,i3lock-fancy-multimonitor -n -b=5x5 && systemctl -i suspend,system-suspend
-Logout,bspc quit,bspc quit
+Suspend,sleep 0.1; i3lock-fancy-multimonitor -b=5x3 ; systemctl -i suspend,system-log-out
+Logout,qtile-cmd -o cmd -f shutdown, system-log-out
 Reboot,systemctl -i reboot,system-reboot
 Poweroff,systemctl -i poweroff,system-shutdown
