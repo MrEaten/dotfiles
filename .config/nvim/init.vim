@@ -30,6 +30,7 @@ call plug#begin()
 	Plug 'junegunn/fzf.vim'
 	Plug 'preservim/nerdcommenter'
 	Plug 'Xuyuanp/nerdtree-git-plugin'
+	Plug 'tomasiser/vim-code-dark'
 
 call plug#end()
 
@@ -102,7 +103,7 @@ set background=dark
 " use 256 colors
 set t_Co=256
 " set colorscheme, requires gruvbox to be installed
-colorscheme onedark
+colorscheme codedark
 " no idea what this is for
 hi Normal guibg=NONE ctermbg=NONE
 " check if terminal supports colorschem
@@ -157,7 +158,7 @@ nnoremap <leader>tn :tabe<CR>
 " new vertical split
 nnoremap <leader>wv :vs<CR>
 " new horizontal split
-nnoremap <leader>wh :sp<CR>
+nnoremap <leader>ws :sp<CR>
 " NERDTREE explorer
 nnoremap <leader>n :NERDTreeToggleVCS<CR>
 " close frame
@@ -217,7 +218,7 @@ let g:ranger_map_keys = 0
 
 " Set lightline theme (vim statusbar)
 let g:lightline = {
-      \ 'colorscheme': 'onedark',
+      \ 'colorscheme': 'codedark',
       \ }
 " Set tmux statusbar to lightline theme
 " execute command 'Tmuxline lightline tmux'
