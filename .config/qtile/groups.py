@@ -45,8 +45,8 @@ def init_layouts(layout_theme=init_layout_theme()):
             #layout.Tile(shift_windows=True, **layout_theme),
             #layout.Matrix(**layout_theme),
             #layout.Zoomy(**layout_theme),
-            layout.MonadTall(**layout_theme),
             layout.Max(**layout_theme),
+            layout.MonadTall(**layout_theme),
             layout.Floating(**layout_theme)]
 
 def init_border_args():

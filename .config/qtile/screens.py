@@ -28,7 +28,7 @@ def init_bar(color=init_colors()):
            disable_drag=True,
            fontsize=14
        ),
-       widget.Spacer(596),
+       widget.Spacer(580),
        widget.TextBox(
            text='',
            font="icomoon",
