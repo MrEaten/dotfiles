@@ -1,4 +1,4 @@
-rofi.lines: 15
+rofi.lines: 10
 rofi.theme: ~/.config/rofi/themes/settings/run.rasi
 
 rofi.kb-accept-entry: Control+m,Return,KP_Enter 

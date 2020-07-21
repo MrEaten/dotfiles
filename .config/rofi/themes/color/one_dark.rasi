@@ -27,10 +27,10 @@
     scrollbar: true;
 
     /* Theme colors */
-	background-transparent:      #282828dd;
+	background-transparent:      #ffffffdd;
     background:                  @black;
     background-color:            @background;
-    foreground:                  @white;
+    foreground:                  @black;
     border-color:                @grey;
     separatorcolor:              @border-color;
     scrollbar-handle:            @border-color;
