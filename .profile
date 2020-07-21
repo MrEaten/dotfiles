@@ -1,5 +1,7 @@
 # set environment variables
 export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
+#export QT_SCALE_FACTOR=1.5
 #export QT_QPA_PLATFORMTHEME=gtk2
 export EDITOR=/usr/bin/nvim
 export PAGER=/usr/bin/less
@@ -28,6 +30,10 @@ xset m 0 0 &
 redshift-gtk &
 # load nvidia settings
 nvidia-settings --load-config-only
+# volume icon
+volumeicon &
+# conky
+conky -c ~/.conky/.conkyrc &
 
 # set environment variable to fix java bugs with bspwm (matlab white windows)
 export _JAVA_AWT_WM_NONREPARENTING=1
