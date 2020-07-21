@@ -43,7 +43,7 @@ function v {
     nvim $1
 }
 function e {
-	emacsclient -t $1
+	devour emacsclient -c $1
 }
 function please {
 	sudo $1
@@ -58,3 +58,13 @@ function mtar {
 function utar {
 	tar -xvf $1
 }
+function nv() {
+  if [ ! -z "$TMUX" ]; then
+    local ids="$(tmux list-panes -a -F '#{pane_current_command} #{window_id} #{pane_id}' | awk '/^nvim / {print $2" "$3; exit}')"
+    local window_id="$ids[(w)1]"
+    local pane_id="$ids[(w)2]"
+    [ ! -z "$pane_id" ] && tmux select-window -t "$window_id" && tmux select-pane -t "$pane_id"
+  fi
+  nvr -s $@
+}
+
