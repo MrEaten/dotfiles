@@ -301,6 +301,18 @@
 	frame_color = "#331DB954"
 	timeout = 10
 
+[Thunderbird]
+	appname = Thunderbird
+	format = "%s\n%b"
+	frame_color = "#0a84ff"
+	timeout = 10
+
+[WhatsApp]
+	appname = whatsapp-for-linux
+	format = "%s\n%b"
+	frame_color = "#331DB954"
+	timeout = 10
+
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
 #
