@@ -52,6 +52,7 @@ set nocompatible
 " set textwidth marker
 set textwidth=80
 set colorcolumn=+1 
+set formatoptions-=t
 
 " encoding 
 set encoding=utf-8
