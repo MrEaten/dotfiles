@@ -20,11 +20,11 @@ call plug#begin()
 	Plug 'nathanaelkane/vim-indent-guides'
 	Plug 'kien/rainbow_parentheses.vim'
 	Plug 'mhinz/vim-startify'
-	Plug 'itchyny/lightline.vim'
+"	Plug 'itchyny/lightline.vim'
 	Plug 'ap/vim-css-color'
 	Plug 'francoiscabrol/ranger.vim'
 	Plug 'rbgrouleff/bclose.vim'
-	Plug 'edkolev/tmuxline.vim'
+"	Plug 'edkolev/tmuxline.vim'
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'neoclide/coc-vimtex'
 	Plug 'junegunn/fzf.vim'
@@ -166,6 +166,9 @@ nnoremap <leader>n :NERDTreeToggleVCS<CR>
 nnoremap <leader>wq :q<CR>
 nnoremap <leader>wa :wqa<CR>
 
+" Emacs-style focus mid-window
+nnoremap <C-l> zz
+
 " setup spellchecking
 map <F6> :set nospell<CR>
 map <F7> :setlocal spell spelllang=de_de<CR> 
@@ -199,37 +202,37 @@ nnoremap <leader>/ <ESC>:BLines<CR>
 """ PLUGINS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-  let g:lightline = {
-        \ 'component_function': {
-        \   'filetype': 'MyFiletype',
-        \   'fileformat': 'MyFileformat',
-        \ }
-        \ }
-  
-  function! MyFiletype()
-    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
-  endfunction
-  
-  function! MyFileformat()
-    return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
-  endfunction
+"  let g:lightline = {
+"        \ 'component_function': {
+"        \   'filetype': 'MyFiletype',
+"        \   'fileformat': 'MyFileformat',
+"        \ }
+"        \ }
+"  
+"  function! MyFiletype()
+"    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+"  endfunction
+"  
+"  function! MyFileformat()
+"    return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+"  endfunction
 
 " disable standard ranger keybindings
 let g:ranger_map_keys = 0
 
 " Set lightline theme (vim statusbar)
-let g:lightline = {
-      \ 'colorscheme': 'codedark',
-      \ }
+"let g:lightline = {
+"      \ 'colorscheme': 'codedark',
+"      \ }
 " Set tmux statusbar to lightline theme
 " execute command 'Tmuxline lightline tmux'
 " and 'TmuxlineSnapshot filename'
 " then source in tmux.conf
 let g:tmuxline_separators = {
     \ 'left' : '',
-    \ 'left_alt': '>',
+    \ 'left_alt': ' ',
     \ 'right' : '',
-    \ 'right_alt' : '<',
+    \ 'right_alt' : ' ',
     \ 'space' : ' '}
 
 
@@ -434,3 +437,5 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
+
+source ~/.config/nvim/statusline.vim
