@@ -59,6 +59,10 @@ super + o ; shift + i
 super + o ; e
  emacsclient -c
 
+# bind keepassxc
+super + o ; k
+ keepassxc
+
 # bind pamac
 super + o ; p
  pamac

@@ -3,8 +3,8 @@
 #################################################################################
 
 # restart
-super + shift + r
- bspc {qhit,wm -r}
+#super + shift + r
+# bspc {qhit,wm -r}
 
 # close and kill 
 super + shift + q
@@ -40,8 +40,11 @@ super + f ; {m,l,s,p}
 #
 
 # focus the node in the given direction
-super + {_,shift + }{h,j,k,l}
+super + {_, shift + }{h,j,k,l}
  bspc node -{f,s} {west,south,north,east}
+
+#super + shift + {h,j,k,l}
+# bspwm_smart_move {west,south,north,east} ; bspwm_smart_move {west,south,north,east}
 
 # focus the node for the given path jump
 super + shift + {p,b,comma,period}
@@ -89,19 +92,16 @@ super + ctrl + shift + space
 #
 # move/resize
 #
-
-# expand a window by moving one of its side outward
-super + alt + {h,j,k,l}
- bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
-
-# contract a window by moving one of its side inward
-super + alt + shift + {h,j,k,l}
- bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+super + alt + r : {h,j,k,l}
+	 bspc node -z {left -20 0 || bspc node -z right -20 0, \
+                bottom 0 20 || bspc node -z top 0 20,\
+                top 0 -20 || bspc node -z bottom 0 -20,\
+                right 20 0 || bspc node -z left 20 0}
 
 # move a floating window
 super + {Left,Down,Up,Right}
  bspc node -v {-20 0,0 20,0 -20,20 0}
 
-# toggle scratchpad
-super + s ; {s,t,k}
- toggle_scratchpad.sh {_,Term,KeePassXC}
+# set layout
+super + d ; l
+ menu_layout.sh
