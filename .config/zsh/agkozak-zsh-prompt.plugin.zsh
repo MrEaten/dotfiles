@@ -58,7 +58,7 @@
 
 autoload -Uz is-at-least
 
-AGKOZAK_MULTILINE=0
+AGKOZAK_MULTILINE=1
 # Options to reset if the prompt is unloaded
 typeset -gA AGKOZAK_OLD_OPTIONS
 AGKOZAK_OLD_OPTIONS=(
