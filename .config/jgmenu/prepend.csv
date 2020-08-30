@@ -1,5 +1,6 @@
-# @search,,3,3,150,30,2,left,top,auto,#383838 0,Search
+#@search,,3,3,150,30,2,left,top,auto,#383838 0,system-search
 Terminal,alacritty,utilities-terminal
 Browser,firefox,firefox
-File manager,krusader,system-file-manager
+Mail,thunderbird,thunderbird
+Music,cantata,cantata
 ^sep()

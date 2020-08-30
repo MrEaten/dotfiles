@@ -12,8 +12,8 @@ menu_radius          = 0
 menu_border          = 1
 menu_halign          = left
 menu_valign          = top
-menu_margin_x = 35
-menu_margin_y = 26
+menu_margin_x = 20
+menu_margin_y = 35
 sub_hover_action     = 1
 item_margin_y        = 5
 item_height          = 30
@@ -31,9 +31,10 @@ icon_theme 			 = Papirus
 #color_sel_fg         = #2b303b 100
 #color_sep_fg         = #8fa1b3 40
 
-color_menu_bg        = #ffffff 100
-color_norm_bg        = #ffffff
+color_menu_bg        = #ffffff 75
+color_norm_bg        = #ffffff 00
 color_norm_fg        = #383838 100
 color_sel_bg         = #383838 40
 color_sel_fg         = #383838 100
 color_sep_fg         = #383838 40
+
